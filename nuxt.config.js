@@ -16,7 +16,11 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Limelight|Merriweather' }
-    ]
+    ],
+    script:[
+            {src:'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'},
+            {src:'https://code.jquery.com/jquery-3.3.1.slim.min.js'}
+        ]
   },
 
   /*
