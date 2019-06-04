@@ -51,7 +51,7 @@ main {
 
 .flex-container div {
   padding: 0.5rem;
-  width: 50%;
+  width: 48%;
   font-size: 0.75rem;
   min-width: 200px;
 }

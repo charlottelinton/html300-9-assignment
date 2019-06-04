@@ -10,49 +10,24 @@
       <p>Merlin Movie House is a place where all your film dreams come true. Ride a dragon, fight a jedi, kiss a toad...</p>
       <hr />
       <h2>Now Playing: Star Trek in its Entirety</h2>
-          <!-- <div v-if="movie">
-            {{ movie.Title }}<br />
-            {{ movie.Year }}<br />
-            {{ movie.Rated }}<br />
-            {{ movie.Released }}<br />
-            {{ movie.Runtime }}<br />
-            {{ movie.Genre }}<br />
-            {{ movie.Director }}<br />
-            {{ movie.Writer }}<br />
-            {{ movie.Actors }}<br />
-            {{ movie.Plot }}<br />
-            {{ movie.Language }}<br />
-            {{ movie.Country }}<br />
-            {{ movie.Awards }}<br />
-            {{ movie.Poster }}<br />
-            {{ movie.Ratings }} ARRAY<br />
-            {{ movie.Metascore }}<br />
-            {{ movie.imdbRating }}<br />
-            {{ movie.imdbVotes }}<br />
-            {{ movie.imdbVotes }}<br />
-          </div>
-        </div>
-      </div>
-      -->
-      <article class="flex-container">
-      <div v-if="movies">
-        <!-- <div style="display: block;">
+      <div v-if="movies" class="flex-container">
+        <!-- Checking data coming in
+        <div style="display: block;">
           {{ movies }}
         </div> -->
+        <!-- For loop through data from API search -->
         <div v-for="item in movies.Search">
-          <div style="display: none;">
-            {{ item }}
-          </div>
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" :alt="item.Title" :src="item.Poster">
             <div class="card-body">
               <h5 class="card-title">{{ item.Title }}</h5>
+              <p>{{ item.Year }}</p>
+              <!-- Booking link to nowhere until page is built -->
               <a href="#" class="btn btn-primary">Book Tickets</a>
             </div>
           </div>
         </div>
       </div>
-    </article>
     </main>
   </section>
 </template>
@@ -60,6 +35,7 @@
 <script>
 import axios from 'axios';
 export default {
+  // API call
   data() {
     return {
       loading: true,
@@ -68,6 +44,7 @@ export default {
     };
   },
   mounted () {
+    // Calling OMDBAPI
     axios.get('http://www.omdbapi.com/?s=star+trek&apikey=29917929')
       .then(response => (
         this.movies = response.data
@@ -81,7 +58,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* Styling for main hero image */
 .hero-image {
   background-image: url('../assets/header.jpg');
@@ -115,7 +92,7 @@ main {
 nav {
   font-family: Merriweather;
 }
-/* ##### */
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -126,11 +103,10 @@ nav {
 
 .flex-container div {
   padding: 0.5rem;
-  width: 20%;
+  margin: 0.5rem;
+  width: 30%;
   font-size: 0.75rem;
   min-width: 200px;
 }
 
-
-/* ##### */
 </style>
